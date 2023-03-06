@@ -1,0 +1,14 @@
+{
+  "name": "node_sprint1_tests",
+  "version": "1.0.0",
+  "description": "Tests Entrega 1.6",
+  "main": "app.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "Carlos Zamora",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^29.4.3"
+  }
+}
