@@ -1,5 +1,16 @@
+const {
+    sumar,
+    restar, 
+    multiplicar, 
+    dividir, 
+    n1E2, 
+    getEmployee, 
+    getSalary, 
+    funcionAsicrona, 
+    funcionQueRetornaPormesa,
+    Persona
+} = require('../app')
 
-const {sumar, restar, multiplicar, dividir, n1E2, getEmployee, getSalary} = require('../app')
 
 /** Tests NIVEL 1 */
 test('Sumar 1 + 2 es igual 3', ()=>{
@@ -45,4 +56,32 @@ describe('getEmployee', ()  => {
         })
     })
 })
+describe('getSalary', () => {
+    test('Debe retornar el salario del empleado si el ID es valido', () => {
+        return getSalary({id: 1})
+        .then(salario => {
+            expect(salario).toBe(4000)
+        })
+    })
+    test('Activa el reject y retorna el error', () => {
+        return getSalary({id: 5})
+        .catch(error => {
+            expect(error.message).toBe('No se encontró el salario para el empleado con id 5')
+        })
+    })
+})
 
+describe('funcionAsicrona', () => {
+    test('Debe resolverse despues de 2 segundos', async () => { 
+        return await funcionAsicrona(funcionQueRetornaPormesa()
+        .then(resolve => {
+            expect(resolve).toBe('Gracias por la espera!')
+        }))
+    })
+    test('Activa el Reject de la promesa', async () => {
+        return await funcionAsicrona(funcionQueRetornaPormesa()
+        .catch(error => {
+            expect(error.message).toMatch('error')
+        }))
+    })
+})

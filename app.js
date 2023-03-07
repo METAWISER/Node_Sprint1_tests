@@ -64,10 +64,42 @@ function getSalary(employee) {
         if (salario) {
             resolve(salario.salary);
         } else {
-            reject(`No se encontró el salario para el empleado con id ${employee.id}`);
+            reject(new Error(`No se encontró el salario para el empleado con id ${employee.id}`));
         }
     });
 };
+
+//Funcion asincrona que recibe una funcion que retorna promesa
+const funcionAsicrona = async () => {
+    try {
+      const resultado = await funcionQueRetornaPormesa();
+      return resultado
+    } catch (error) {
+      return new Error(error);
+    }
+  };
+  const funcionQueRetornaPormesa = () => {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        resolve('Gracias por la espera!');
+      }, 2000);
+    });
+  };
+
+  //Creo la Clase PERSONA
+class Persona {
+    constructor (nom) {
+        this.nom = nom
+    }
+    //Metodo que muestra el nom 
+    dirNom() {return(this.nom);} 
+}
+// Creo instancia de PERSONA
+const persona = new Persona('Carlos Z.');
+// Invoco el Metodo para mostrar el nombre por la consola 
+persona.dirNom();
+
+
 
 module.exports = {
     sumar,
@@ -76,5 +108,8 @@ module.exports = {
     dividir,
     n1E2,
     getEmployee,
-    getSalary
+    getSalary,
+    funcionAsicrona,
+    funcionQueRetornaPormesa,
+    Persona
 };
