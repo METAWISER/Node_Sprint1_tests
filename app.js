@@ -70,25 +70,25 @@ function getSalary(employee) {
 };
 
 //Funcion asincrona que recibe una funcion que retorna promesa
-const funcionAsicrona = async () => {
+const funcionAsicrona = async (callback) => {
     try {
-      const resultado = await funcionQueRetornaPormesa();
+      const resultado = await callback();
       return resultado
     } catch (error) {
-      return new Error(error);
+      throw new Error(error);
     }
   };
+
   const funcionQueRetornaPormesa = () => {
     return new Promise((resolve) => {
-      setTimeout(() => {
-        resolve('Gracias por la espera!');
-      }, 2000);
+      setTimeout(() => {resolve('Gracias por la espera!')}, 2000);
     });
   };
 
   //Creo la Clase PERSONA
 class Persona {
     constructor (nom) {
+        if(nom === '') throw new Error('name is empty')
         this.nom = nom
     }
     //Metodo que muestra el nom 
@@ -113,3 +113,5 @@ module.exports = {
     funcionQueRetornaPormesa,
     Persona
 };
+
+
