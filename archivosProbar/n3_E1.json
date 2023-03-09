@@ -1,0 +1,19 @@
+{
+  "employees": [
+    {
+      "id": 1,
+      "name": "Linux Torvalds",
+      "salary": 4000
+    },
+    {
+      "id": 2,
+      "name": "Bill Gates",
+      "salary": 1000
+    },
+    {
+      "id": 3,
+      "name": "Jeff Bezos",
+      "salary": 2000
+    }
+  ]
+}
